@@ -40,14 +40,20 @@ git push -u origin main
    - Output Directory: `.next`
 
 6. **Add Environment Variables** (CRITICAL):
-   Click "Environment Variables" and add these:
+   Click "Environment Variables" and add these exact values:
+   
+   ```env
+   MONGODB_URI=mongodb+srv://nfrnayem123_db_user:zNALSLnUFv25VhqA@evershop.fgij96e.mongodb.net/?retryWrites=true&w=majority&appName=evershop
+   JWT_SECRET=72caa94699d9a7255b7b8e0f7e055b49
+   NEXTAUTH_SECRET=YgjjNPcjo0CaXadUK9Gk42R9JsOTxpZLaqb70XWZu3DSBoe1KRqjNl2eNaY=
+   NEXTAUTH_URL=https://your-app-name.vercel.app
+   NODE_ENV=production
    ```
-   MONGODB_URI = mongodb+srv://your-username:password@cluster.mongodb.net/evershop-ecommerce
-   JWT_SECRET = your-super-secure-jwt-secret-at-least-32-characters-long
-   NEXTAUTH_SECRET = your-super-secure-nextauth-secret
-   NEXTAUTH_URL = https://your-app-name.vercel.app
-   NODE_ENV = production
-   ```
+
+   **Important Notes:**
+   - Add each variable separately in Vercel (don't copy the whole block)
+   - Make sure there are **NO SPACES** around the `=` sign
+   - Update `NEXTAUTH_URL` with your actual Vercel domain after deployment
 
 7. **Click "Deploy"**
 
