@@ -5,12 +5,13 @@ import Product from '@/models/Product';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
     
-    const category = await Category.findById(params.id);
+    const category = await Category.findById(id);
     
     if (!category) {
       return NextResponse.json(
@@ -31,14 +32,15 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
     
     const { name, description, image, parentCategory, isActive } = await request.json();
 
-    const category = await Category.findById(params.id);
+    const category = await Category.findById(id);
     
     if (!category) {
       return NextResponse.json(
@@ -51,7 +53,7 @@ export async function PUT(
     if (name && name !== category.name) {
       const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
       const existingCategory = await Category.findOne({
-        _id: { $ne: params.id },
+        _id: { $ne: id },
         $or: [{ name }, { slug }]
       });
 
@@ -86,12 +88,13 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
     
-    const category = await Category.findById(params.id);
+    const category = await Category.findById(id);
     
     if (!category) {
       return NextResponse.json(
@@ -101,7 +104,7 @@ export async function DELETE(
     }
 
     // Check if category has products
-    const productCount = await Product.countDocuments({ category: params.id });
+    const productCount = await Product.countDocuments({ category: id });
     
     if (productCount > 0) {
       return NextResponse.json(
@@ -111,7 +114,7 @@ export async function DELETE(
     }
 
     // Check if category has subcategories
-    const subcategoryCount = await Category.countDocuments({ parent: params.id });
+    const subcategoryCount = await Category.countDocuments({ parent: id });
     
     if (subcategoryCount > 0) {
       return NextResponse.json(
@@ -120,7 +123,7 @@ export async function DELETE(
       );
     }
 
-    await Category.findByIdAndDelete(params.id);
+    await Category.findByIdAndDelete(id);
 
     return NextResponse.json({ message: 'Category deleted successfully' });
   } catch (error) {

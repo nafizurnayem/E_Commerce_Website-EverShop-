@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { Search, Filter, Grid, List, Star, ShoppingCart, Zap, Cpu, Wifi, CircuitBoard } from 'lucide-react';
 import { useCartStore } from '@/store/cart';
 import toast from 'react-hot-toast';
+import dynamic from 'next/dynamic';
+
+// Disable SSR for this component
+const DynamicProductsPage = dynamic(() => Promise.resolve(ProductsPageComponent), {
+  ssr: false
+});
 
 interface Product {
   _id: string;
@@ -28,7 +34,7 @@ interface Product {
   reviews?: number;
 }
 
-export default function ProductsPage() {
+function ProductsPageComponent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -530,4 +536,8 @@ export default function ProductsPage() {
       </div>
     </div>
   );
+}
+
+export default function ProductsPage() {
+  return <DynamicProductsPage />;
 }

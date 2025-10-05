@@ -20,8 +20,14 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import dynamic from 'next/dynamic';
 
-export default function AccountPage() {
+// Disable SSR for this component to avoid hydration issues
+const DynamicAccountPage = dynamic(() => Promise.resolve(AccountPageComponent), {
+  ssr: false
+});
+
+function AccountPageComponent() {
   const { user, logout, updateUser } = useAuthStore();
   const [activeTab, setActiveTab] = useState('profile');
   const [orders, setOrders] = useState([]);
@@ -1223,4 +1229,8 @@ export default function AccountPage() {
       </div>
     </div>
   );
+}
+
+export default function AccountPage() {
+  return <DynamicAccountPage />;
 }

@@ -8,7 +8,7 @@ export interface DecodedToken {
   exp: number;
 }
 
-export async function verifyToken(token: string | null): Promise<DecodedToken | null> {
+export async function verifyToken(token: string | null | undefined): Promise<DecodedToken | null> {
   if (!token) {
     return null;
   }
