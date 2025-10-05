@@ -1,0 +1,39 @@
+nohup: ignoring input
+
+> evershop-ecommerce@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.4 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.142:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Compiled middleware in 448ms
+ ✓ Ready in 2.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 7.6s
+ GET / 200 in 9380ms
+ ✓ Compiled /api/admin/setup in 486ms
+(node:37219) [MONGOOSE] Warning: Duplicate schema index on {"email":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Error creating admin user: MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at <unknown> (MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017)
+    at async connectDB (src/lib/mongodb.ts:40:19)
+    at async POST (src/app/api/admin/setup/route.ts:8:5)
+  38 |
+  39 |   try {
+> 40 |     cached.conn = await cached.promise;
+     |                   ^
+  41 |   } catch (e) {
+  42 |     cached.promise = null;
+  43 |     throw e; {
+  errorLabelSet: Set(0) {},
+  reason: [TopologyDescription],
+  code: undefined,
+  [cause]: [TopologyDescription]
+}
+ POST /api/admin/setup 500 in 31674ms
+ GET / 200 in 567ms
+ ✓ Compiled /favicon.ico in 417ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 740ms
