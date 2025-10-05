@@ -270,4 +270,4 @@ If you encounter any issues or have questions:
 
 ---
 
-**Built with ❤️ for the Bangladeshi e-commerce market**
+**Built with ❤️ for the Bangladeshi e-commerce market**# E_Commerce_Website-EverShop-
