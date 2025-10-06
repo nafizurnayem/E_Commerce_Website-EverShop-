@@ -35,12 +35,14 @@ export default function AuthGuard({ children, requireAdmin = true }: AuthGuardPr
           body: JSON.stringify({ token })
         });
 
+        console.log('🔍 AuthGuard - Verify response status:', response.status);
         const data = await response.json();
         console.log('🔍 AuthGuard - Token verification result:', data);
 
-        if (data.valid) {
+        if (response.ok && data.valid) {
           if (requireAdmin && data.user.role !== 'admin') {
             console.log('❌ AuthGuard - User is not admin');
+            localStorage.removeItem('admin_token');
             router.push('/admin/login');
             return;
           }
@@ -48,12 +50,13 @@ export default function AuthGuard({ children, requireAdmin = true }: AuthGuardPr
           console.log('✅ AuthGuard - Authentication successful');
           setIsAuthenticated(true);
         } else {
-          console.log('❌ AuthGuard - Token invalid, redirecting to login');
+          console.log('❌ AuthGuard - Token invalid, redirecting to login. Error:', data.error);
           localStorage.removeItem('admin_token');
           router.push('/admin/login');
         }
       } catch (error) {
-        console.error('AuthGuard - Auth check failed:', error);
+        console.error('❌ AuthGuard - Auth check failed:', error);
+        localStorage.removeItem('admin_token');
         router.push('/admin/login');
       } finally {
         setIsLoading(false);

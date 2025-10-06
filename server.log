@@ -1,4 +1,3 @@
-nohup: ignoring input
 
 > evershop-ecommerce@0.1.0 dev
 > next dev --turbopack
@@ -9,31 +8,37 @@ nohup: ignoring input
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Compiled middleware in 448ms
- ✓ Ready in 2.3s
- ○ Compiling / ...
- ✓ Compiled / in 7.6s
- GET / 200 in 9380ms
- ✓ Compiled /api/admin/setup in 486ms
-(node:37219) [MONGOOSE] Warning: Duplicate schema index on {"email":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 532ms
+ ✓ Ready in 3.6s
+ ○ Compiling /api/auth/login ...
+ ✓ Compiled /api/auth/login in 5.4s
+(node:115691) [MONGOOSE] Warning: Duplicate schema index on {"email":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
 (Use `node --trace-warnings ...` to show where the warning was created)
-Error creating admin user: MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
-    at <unknown> (MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017)
-    at async connectDB (src/lib/mongodb.ts:40:19)
-    at async POST (src/app/api/admin/setup/route.ts:8:5)
-  38 |
-  39 |   try {
-> 40 |     cached.conn = await cached.promise;
-     |                   ^
-  41 |   } catch (e) {
-  42 |     cached.promise = null;
-  43 |     throw e; {
-  errorLabelSet: Set(0) {},
-  reason: [TopologyDescription],
-  code: undefined,
-  [cause]: [TopologyDescription]
+🔍 Login attempt: { email: 'admin@evershop.com', passwordLength: 9 }
+🔍 User found: admin@evershop.com (admin)
+🔍 Verifying password...
+🔍 Password valid: true
+✅ Login successful for: admin@evershop.com
+🔍 Setting cookie with token for user: admin@evershop.com
+ POST /api/auth/login 200 in 8441ms
+ ○ Compiling /api/auth/verify ...
+ ✓ Compiled /api/auth/verify in 518ms
+🔍 Auth verify - Token received: true
+🔍 Auth verify - JWT Secret exists: true
+❌ Token verification error: Error [JsonWebTokenError]: invalid signature
+    at POST (src/app/api/auth/verify/route.ts:22:25)
+  20 |
+  21 |     // Verify the token
+> 22 |     const decoded = jwt.verify(token, process.env.JWT_SECRET) as any;
+     |                         ^
+  23 |     console.log('🔍 Auth verify - Token decoded:', { userId: decoded.userId, role: decoded.role });
+  24 |     
+  25 |     // Check if user is admin {
+  constructor: [Function: JsonWebTokenError]
 }
- POST /api/admin/setup 500 in 31674ms
- GET / 200 in 567ms
- ✓ Compiled /favicon.ico in 417ms
- GET /favicon.ico?favicon.0b3bf435.ico 200 in 740ms
+ POST /api/auth/verify 200 in 1730ms
+ ✓ Compiled middleware in 3ms
+ ✓ Compiled /api/debug/env in 337ms
+ GET /api/debug/env 200 in 816ms
+[?25h

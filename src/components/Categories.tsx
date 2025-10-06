@@ -13,42 +13,63 @@ interface Category {
   description?: string;
 }
 
-// Placeholder categories - replace with API data
+// Featured Sensor & Electronic Component Categories
 const placeholderCategories = [
   {
     _id: '1',
-    name: 'Electronics',
-    slug: 'electronics',
-    image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop&crop=center',
-    description: 'Latest gadgets and tech'
+    name: 'Temperature Sensors',
+    slug: 'temperature-sensors',
+    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop&crop=center',
+    description: 'Thermistors, DHT sensors, LM35 modules'
   },
   {
     _id: '2',
-    name: 'Fashion',
-    slug: 'fashion',
-    image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&h=300&fit=crop&crop=center',
-    description: 'Trendy clothing and accessories'
+    name: 'Motion & Proximity',
+    slug: 'motion-proximity',
+    image: 'https://images.unsplash.com/photo-1563829155-d7d8b0b5aa43?w=400&h=300&fit=crop&crop=center',
+    description: 'PIR, Ultrasonic, IR sensors'
   },
   {
     _id: '3',
-    name: 'Home & Garden',
-    slug: 'home-garden',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center',
-    description: 'Everything for your home'
+    name: 'Environmental Sensors',
+    slug: 'environmental-sensors',
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop&crop=center',
+    description: 'Gas, humidity, pressure, air quality'
   },
   {
     _id: '4',
-    name: 'Sports',
-    slug: 'sports',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center',
-    description: 'Fitness and outdoor gear'
+    name: 'Light & Photo Sensors',
+    slug: 'light-photo-sensors',
+    image: 'https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=400&h=300&fit=crop&crop=center',
+    description: 'LDR, photodiodes, light sensors'
   },
   {
     _id: '5',
-    name: 'Beauty',
-    slug: 'beauty',
-    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop&crop=center',
-    description: 'Skincare and cosmetics'
+    name: 'Motion & Orientation',
+    slug: 'motion-orientation',
+    image: 'https://images.unsplash.com/photo-1608467017651-82b7c34e46e4?w=400&h=300&fit=crop&crop=center',
+    description: 'Gyroscope, accelerometer, IMU modules'
+  },
+  {
+    _id: '6',
+    name: 'Biometric Sensors',
+    slug: 'biometric-sensors',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&crop=center',
+    description: 'Heartbeat, fingerprint, pulse sensors'
+  },
+  {
+    _id: '7',
+    name: 'Touch & Force',
+    slug: 'touch-force',
+    image: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400&h=300&fit=crop&crop=center',
+    description: 'Capacitive touch, force, vibration sensors'
+  },
+  {
+    _id: '8',
+    name: 'Time & Clock Modules',
+    slug: 'time-clock',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&crop=center',
+    description: 'RTC modules, timers, clock sensors'
   },
   {
     _id: '6',

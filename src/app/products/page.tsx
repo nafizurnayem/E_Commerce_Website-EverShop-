@@ -28,6 +28,18 @@ interface Product {
     dimensions?: string;
     weight?: string;
     compatibility?: string[];
+    interface?: string;
+    range?: string;
+    resolution?: string;
+    accuracy?: string;
+    type?: string;
+    cpu?: string;
+    ram?: string;
+    points?: string;
+    protocol?: string;
+    stepAngle?: string;
+    torque?: string;
+    [key: string]: any; // Allow additional properties
   };
   features?: string[];
   rating?: number;
@@ -45,54 +57,235 @@ function ProductsPageComponent() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const { addItem } = useCartStore();
 
-  // Sample electronic components data
+  // Electronic Sensors & Components
   const sampleProducts: Product[] = [
     {
-      _id: '1',
-      name: 'ESP32 Development Board',
-      description: 'Powerful WiFi + Bluetooth microcontroller for IoT projects',
-      price: 12.99,
-      images: ['https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500'],
-      category: 'microcontrollers',
-      stock: 25,
+      _id: 'sensor-1',
+      name: 'DHT22 Temperature Humidity Sensor',
+      description: 'High precision digital temperature and humidity sensor module',
+      price: 8.99,
+      images: ['https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500'],
+      category: 'temperature',
+      stock: 98,
       specifications: {
-        voltage: '3.3V',
-        frequency: '240MHz',
-        dimensions: '55x28x13mm',
-        compatibility: ['Arduino IDE', 'MicroPython', 'ESP-IDF']
+        voltage: '3.3V-6V',
+        interface: 'Digital (Single-wire)',
+        range: '-40°C to +80°C, 0-100% RH',
+        accuracy: '±0.5°C, ±2% RH'
       },
-      features: ['WiFi 802.11b/g/n', 'Bluetooth 4.2', '34 GPIO pins', 'Built-in antenna'],
+      features: ['Digital output', 'Calibrated sensor', 'Long-term stability', 'Low power'],
       rating: 4.8,
-      reviews: 156
+      reviews: 234
     },
     {
-      _id: '2',
-      name: 'Arduino Uno R3',
-      description: 'The classic microcontroller board for beginners and professionals',
-      price: 18.50,
-      images: ['https://images.unsplash.com/photo-1553406830-ef2513450d76?w=500'],
-      category: 'microcontrollers',
-      stock: 42,
+      _id: 'sensor-2',
+      name: 'HC-SR04 Ultrasonic Distance Sensor',
+      description: 'Ultrasonic ranging module for accurate distance measurement',
+      price: 12.99,
+      images: ['https://images.unsplash.com/photo-1518346001043-13c7b4502b5a?w=500'],
+      category: 'motion',
+      stock: 85,
       specifications: {
         voltage: '5V',
-        frequency: '16MHz',
-        dimensions: '68.6x53.4mm',
-        compatibility: ['Arduino IDE', 'PlatformIO']
+        interface: 'Digital (Trigger/Echo)',
+        range: '2cm-400cm',
+        accuracy: '±3mm'
       },
-      features: ['14 Digital I/O pins', '6 Analog inputs', 'USB connection', 'ISP header'],
-      rating: 4.9,
+      features: ['Non-contact measurement', 'Stable performance', 'Easy interface', 'Wide range'],
+      rating: 4.8,
       reviews: 324
     },
     {
-      _id: '3',
-      name: 'Raspberry Pi 4 Model B',
-      description: 'High-performance single-board computer for advanced projects',
-      price: 75.00,
-      images: ['https://images.unsplash.com/photo-1588508065123-287b28e013da?w=500'],
-      category: 'single-board-computers',
-      stock: 18,
+      _id: 'sensor-3',
+      name: 'PIR Motion Sensor Module',
+      description: 'Passive infrared sensor for motion detection applications',
+      price: 6.99,
+      images: ['https://images.unsplash.com/photo-1563829155-d7d8b0b5aa43?w=500'],
+      category: 'motion',
+      stock: 95,
+      specifications: {
+        voltage: '4.5V-20V',
+        interface: 'Digital',
+        range: '3m-7m detection',
+        angle: '120° detection angle'
+      },
+      features: ['Wide detection angle', 'Adjustable sensitivity', 'Low power consumption', 'Easy setup'],
+      rating: 4.7,
+      reviews: 156
+    },
+    {
+      _id: 'sensor-4',
+      name: 'MPU6050 Gyroscope Accelerometer',
+      description: '6-axis motion tracking device with gyroscope and accelerometer',
+      price: 14.99,
+      images: ['https://images.unsplash.com/photo-1608467017651-82b7c34e46e4?w=500'],
+      category: 'motion',
+      stock: 67,
+      specifications: {
+        voltage: '2.375V-3.46V',
+        interface: 'I2C',
+        range: '±2/±4/±8/±16g, ±250/±500/±1000/±2000°/s',
+        accuracy: '16-bit ADC'
+      },
+      features: ['6-axis motion tracking', 'Digital Motion Processor', 'Low power mode', 'FIFO buffer'],
+      rating: 4.9,
+      reviews: 278
+    },
+    {
+      _id: 'sensor-5',
+      name: 'MQ-2 Gas Smoke Sensor',
+      description: 'Gas sensor for detecting LPG, propane, hydrogen, and smoke',
+      price: 11.99,
+      images: ['https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500'],
+      category: 'gas',
+      stock: 54,
       specifications: {
         voltage: '5V',
+        interface: 'Analog/Digital',
+        range: '300-10000ppm',
+        preheat: '20 seconds'
+      },
+      features: ['Wide detecting scope', 'Stable performance', 'Fast response', 'Analog/Digital output'],
+      rating: 4.5,
+      reviews: 167
+    },
+    {
+      _id: 'sensor-6',
+      name: 'LDR Light Sensor Module',
+      description: 'Photoresistor sensor for light intensity measurement',
+      price: 2.99,
+      images: ['https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=500'],
+      category: 'light',
+      stock: 300,
+      specifications: {
+        voltage: '3.3V-5V',
+        interface: 'Analog',
+        range: '1-100000 Lux',
+        resistance: '1-100kΩ'
+      },
+      features: ['Light sensitive', 'Simple interface', 'Cost effective', 'Wide range detection'],
+      rating: 4.3,
+      reviews: 89
+    },
+    {
+      _id: 'sensor-7',
+      name: 'DS3231 Real Time Clock',
+      description: 'High precision real-time clock with temperature compensation',
+      price: 9.99,
+      images: ['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500'],
+      category: 'environmental',
+      stock: 78,
+      specifications: {
+        voltage: '2.3V-5.5V',
+        interface: 'I2C',
+        accuracy: '±2ppm (±1 minute/year)',
+        backup: 'Battery included'
+      },
+      features: ['Temperature compensated', 'Battery backup', 'Alarm functions', 'I2C interface'],
+      rating: 4.7,
+      reviews: 203
+    },
+    {
+      _id: 'sensor-8',
+      name: 'Soil Moisture Sensor',
+      description: 'Capacitive soil moisture sensor for plant monitoring',
+      price: 7.99,
+      images: ['https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500'],
+      category: 'environmental',
+      stock: 76,
+      specifications: {
+        voltage: '3.3V-5V',
+        interface: 'Analog',
+        range: '0-100% moisture',
+        type: 'Capacitive'
+      },
+      features: ['Corrosion resistant', 'No direct soil contact', 'Long lifespan', 'Waterproof probe'],
+      rating: 4.6,
+      reviews: 134
+    },
+    {
+      _id: 'sensor-9',
+      name: 'Pulse Heart Rate Sensor',
+      description: 'Optical heart rate sensor for pulse detection',
+      price: 15.99,
+      images: ['https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500'],
+      category: 'biometric',
+      stock: 35,
+      specifications: {
+        voltage: '3.3V-5V',
+        interface: 'Analog',
+        range: '30-200 BPM',
+        type: 'Optical'
+      },
+      features: ['Optical sensor', 'Real-time monitoring', 'Easy to use', 'Medical grade'],
+      rating: 4.4,
+      reviews: 87
+    },
+    {
+      _id: 'sensor-10',
+      name: 'Capacitive Touch Sensor',
+      description: 'Touch-sensitive switch sensor module',
+      price: 5.99,
+      images: ['https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=500'],
+      category: 'touch',
+      stock: 123,
+      specifications: {
+        voltage: '2.0V-5.5V',
+        interface: 'Digital',
+        sensitivity: 'Adjustable',
+        type: 'Capacitive'
+      },
+      features: ['Capacitive sensing', 'Low power', 'Toggle/momentary modes', 'LED indicator'],
+      rating: 4.4,
+      reviews: 156
+    },
+    {
+      _id: 'sensor-11',
+      name: 'IR Infrared Sensor Module',
+      description: 'Infrared sensor for obstacle detection and avoidance',
+      price: 4.99,
+      images: ['https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=500'],
+      category: 'motion',
+      stock: 210,
+      specifications: {
+        voltage: '3.3V-5V',
+        interface: 'Digital',
+        range: '2cm-30cm',
+        beam: 'Infrared'
+      },
+      features: ['Adjustable sensitivity', 'LED indicators', 'Fast response', 'Non-contact detection'],
+      rating: 4.4,
+      reviews: 142
+    },
+    {
+      _id: 'sensor-12',
+      name: 'Vibration Shock Sensor',
+      description: 'Digital vibration and shock detection sensor',
+      price: 4.99,
+      images: ['https://images.unsplash.com/photo-1563829155-d7d8b0b5aa43?w=500'],
+      category: 'motion',
+      stock: 89,
+      specifications: {
+        voltage: '3.3V-5V',
+        interface: 'Digital',
+        sensitivity: 'Adjustable',
+        type: 'SW-420'
+      },
+      features: ['Adjustable sensitivity', 'LED indicators', 'Compact size', 'Easy installation'],
+      rating: 4.3,
+      reviews: 78
+    },
+    {
+      _id: 'sensor-13',
+      name: 'Raspberry Pi 4 Model B',
+      description: 'Single-board computer for IoT and embedded projects',
+      price: 85.00,
+      images: ['https://images.unsplash.com/photo-1581092918484-8313aa7ac5ff?w=500'],
+      category: 'microcontrollers',
+      stock: 24,
+      specifications: {
+        cpu: 'Quad-core ARM Cortex-A72',
+        ram: '4GB LPDDR4',
         dimensions: '85.6x56.5mm',
         compatibility: ['Raspberry Pi OS', 'Ubuntu', 'Windows IoT']
       },
@@ -191,12 +384,14 @@ function ProductsPageComponent() {
   ];
 
   const categories = [
-    { id: 'all', name: 'All Products', icon: CircuitBoard },
-    { id: 'microcontrollers', name: 'Microcontrollers', icon: Cpu },
-    { id: 'single-board-computers', name: 'Single Board Computers', icon: Cpu },
-    { id: 'motors', name: 'Motors & Actuators', icon: Zap },
-    { id: 'sensors', name: 'Sensors', icon: Wifi },
-    { id: 'prototyping', name: 'Prototyping', icon: Grid }
+    { id: 'all', name: 'All Sensors', icon: CircuitBoard },
+    { id: 'temperature', name: 'Temperature Sensors', icon: Cpu },
+    { id: 'motion', name: 'Motion & Proximity', icon: Wifi },
+    { id: 'environmental', name: 'Environmental', icon: Zap },
+    { id: 'light', name: 'Light & Photo', icon: Grid },
+    { id: 'gas', name: 'Gas & Smoke', icon: CircuitBoard },
+    { id: 'biometric', name: 'Biometric', icon: Cpu },
+    { id: 'touch', name: 'Touch & Force', icon: Wifi }
   ];
 
   useEffect(() => {

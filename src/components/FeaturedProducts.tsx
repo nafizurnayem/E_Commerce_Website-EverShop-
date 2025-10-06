@@ -26,67 +26,87 @@ interface Product {
   discount?: number;
 }
 
-// Placeholder products - replace with API data
+// Featured Sensor Products - Electronic Components & Sensors
 const placeholderProducts: Product[] = [
   {
-    _id: '1',
-    name: 'Wireless Bluetooth Headphones',
-    price: 79.99,
-    originalPrice: 99.99,
-    mainImage: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop&crop=center',
-    category: 'Electronics',
-    rating: { average: 4.5, count: 128 },
-    stock: 25,
-    discount: 20
-  },
-  {
-    _id: '2',
-    name: 'Premium Cotton T-Shirt',
-    price: 24.99,
-    mainImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop&crop=center',
-    category: 'Fashion',
-    rating: { average: 4.3, count: 89 },
-    stock: 50
-  },
-  {
-    _id: '3',
-    name: 'Smart Fitness Watch',
-    price: 199.99,
-    originalPrice: 249.99,
-    mainImage: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&crop=center',
-    category: 'Electronics',
-    rating: { average: 4.7, count: 203 },
-    stock: 15,
-    discount: 20
-  },
-  {
-    _id: '4',
-    name: 'Organic Skincare Set',
-    price: 89.99,
-    mainImage: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop&crop=center',
-    category: 'Beauty',
-    rating: { average: 4.6, count: 156 },
-    stock: 30
-  },
-  {
-    _id: '5',
-    name: 'Professional Coffee Maker',
-    price: 129.99,
-    originalPrice: 159.99,
-    mainImage: 'https://images.unsplash.com/photo-1517256673644-36ad11246d21?w=400&h=400&fit=crop&crop=center',
-    category: 'Home & Garden',
-    rating: { average: 4.4, count: 95 },
-    stock: 12,
+    _id: 'sensor-1',
+    name: 'Arduino Ultrasonic Sensor HC-SR04',
+    price: 12.99,
+    originalPrice: 15.99,
+    mainImage: 'https://images.unsplash.com/photo-1518346001043-13c7b4502b5a?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.8, count: 324 },
+    stock: 85,
     discount: 19
   },
   {
-    _id: '6',
-    name: 'Yoga Mat Pro',
-    price: 39.99,
-    mainImage: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop&crop=center',
-    category: 'Sports',
-    rating: { average: 4.2, count: 67 },
-    stock: 40
+    _id: 'sensor-2',
+    name: 'DHT22 Temperature & Humidity Sensor',
+    price: 8.99,
+    mainImage: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.6, count: 198 },
+    stock: 120
+  },
+  {
+    _id: 'sensor-3',
+    name: 'PIR Motion Sensor Module',
+    price: 6.99,
+    originalPrice: 9.99,
+    mainImage: 'https://images.unsplash.com/photo-1563829155-d7d8b0b5aa43?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.7, count: 156 },
+    stock: 95,
+    discount: 30
+  },
+  {
+    _id: 'sensor-4',
+    name: 'MPU6050 Gyroscope Accelerometer',
+    price: 14.99,
+    mainImage: 'https://images.unsplash.com/photo-1608467017651-82b7c34e46e4?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.9, count: 278 },
+    stock: 67
+  },
+  {
+    _id: 'sensor-5',
+    name: 'IR Infrared Sensor Module',
+    price: 4.99,
+    originalPrice: 7.99,
+    mainImage: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.4, count: 142 },
+    stock: 210,
+    discount: 38
+  },
+  {
+    _id: 'sensor-6',
+    name: 'LDR Light Dependent Resistor',
+    price: 2.99,
+    mainImage: 'https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.3, count: 89 },
+    stock: 300
+  },
+  {
+    _id: 'sensor-7',
+    name: 'MQ-2 Gas Sensor Module',
+    price: 11.99,
+    mainImage: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.5, count: 167 },
+    stock: 54
+  },
+  {
+    _id: 'sensor-8',
+    name: 'Real Time Clock RTC DS3231',
+    price: 9.99,
+    originalPrice: 12.99,
+    mainImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop&crop=center',
+    category: 'Electronic Sensors',
+    rating: { average: 4.7, count: 203 },
+    stock: 78,
+    discount: 23
   }
 ];
 
